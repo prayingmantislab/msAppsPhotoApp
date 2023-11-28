@@ -7,6 +7,7 @@ async function fetchPhotos(category: string) {
   const response = await axios.get(
     `https://pixabay.com/api/?key=${API_KEY}&q=${category}`
   );
+  console.log(response.data.hits);
   return response.data.hits;
 }
 
