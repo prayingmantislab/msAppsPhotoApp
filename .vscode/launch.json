@@ -2,6 +2,16 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "ts-node",
+      "type": "node",
+      "request": "launch",
+      "args": ["${relativeFile}"],
+      "runtimeArgs": ["-r", "ts-node/register"],
+      "cwd": "${workspaceRoot}",
+      "protocol": "inspector",
+      "internalConsoleOptions": "openOnSessionStart"
+    },
+    {
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
