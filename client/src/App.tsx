@@ -3,15 +3,22 @@ import axios from 'axios';
 import './App.css';
 import Navbar from './components/Navbar';
 import PhotoList from './components/PhotoList';
-
+import { Provider, useSelector } from 'react-redux';
+import store from './store';
 interface Photo {
   id: number;
   largeImageURL: string;
 }
-
+interface RootState {
+  photos: Photo[];
+  isCategoryModalOpen: boolean;
+  currentPage: number;
+  currentCategory: string;
+  selectedPhoto: Photo | null;
+}
 function App() {
   const [photos, setPhotos] = useState<Photo[]>([]);
-  const [category, setCategory] = useState('default');
+  const category = useSelector((state: RootState) => state.currentCategory);
   const [page, setPage] = useState(1);
 
   const onPhotoClick = (photo: Photo) => {
@@ -22,8 +29,7 @@ function App() {
     const fetchPhotos = async () => {
       try {
         const response = await axios.get(
-          // `http://localhost:5001/api/photos/${category}?page=${page}`
-          `http://localhost:5001/api/photos/women?page=1`
+          `http://localhost:5001/api/photos/${category}?page=${page}`
         );
         setPhotos(response.data);
       } catch (error) {
@@ -32,8 +38,7 @@ function App() {
     };
 
     fetchPhotos();
-  }, []);
-  // }, [category, page]);
+  }, [category, page]);
 
   return (
     <div>

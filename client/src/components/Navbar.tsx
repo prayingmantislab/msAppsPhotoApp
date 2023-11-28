@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+import { useDispatch } from 'react-redux';
+import { setCurrentCategory } from '../store';
 
 const Navbar = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const dispatch = useDispatch();
   const openModal = () => {
     setModalIsOpen(true);
   };
@@ -12,7 +14,8 @@ const Navbar = () => {
     setModalIsOpen(false);
   };
   const selectCategory = (category: string) => {
-    setSelectedCategory(category);
+    dispatch(setCurrentCategory(category));
+    closeModal();
   };
   return (
     <nav className='container mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center space-x-4'>
