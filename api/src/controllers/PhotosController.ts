@@ -1,4 +1,3 @@
-// PhotosController.ts
 import express, { Request, Response } from 'express';
 import pixaService from '../services/PixaService';
 
