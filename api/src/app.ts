@@ -1,14 +1,14 @@
-import express, { Request, Response } from 'express';
+// app.ts
 import dotenv from 'dotenv';
+import express from 'express';
+import photosController from './controllers/PhotosController';
+
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const PIXABAY_API_KEY = process.env.PIXABAY_API_KEY;
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello, World!');
-});
+app.use('/api', photosController);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
