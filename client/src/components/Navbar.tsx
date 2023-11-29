@@ -41,7 +41,16 @@ const Navbar = () => {
           Select Category
         </h2>
         <div className='flex space-x-4 space-between justify-center'>
-          {['animals', 'sports', 'fashion', 'nature'].map((category) => (
+          {[
+            'animals',
+            'Backgrounds',
+            'Architecture',
+            'nature',
+            'food',
+            'monuments',
+            'science',
+            'cars',
+          ].map((category) => (
             <button
               key={category}
               onClick={() => selectCategory(category)}

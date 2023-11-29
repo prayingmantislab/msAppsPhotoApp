@@ -17,7 +17,7 @@ const initialState: State = {
   photos: [],
   isCategoryModalOpen: false,
   currentPage: 1,
-  currentCategory: 'basketball',
+  currentCategory: 'monuments',
   selectedPhoto: null,
 };
 

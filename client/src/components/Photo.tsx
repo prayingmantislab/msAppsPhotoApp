@@ -7,11 +7,11 @@ interface PhotoProps {
 }
 
 const Photo: React.FC<PhotoProps> = ({ photo, onClick }) => (
-  <div className='w-full h-80' onClick={() => onClick(photo)}>
+  <div className='w-full h-full' onClick={() => onClick(photo)}>
     <img
       src={photo.largeImageURL}
       alt={`Photo ${photo.id}`}
-      className='object-contain w-full h-full'
+      className='object-contain w-80 h-80'
     />
   </div>
 );
