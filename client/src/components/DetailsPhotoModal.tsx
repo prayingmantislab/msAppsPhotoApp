@@ -5,7 +5,6 @@ import { RootState } from '../store';
 
 const DetailsPhotoModal: React.FC = () => {
   const { selectedPhoto } = useSelector((state: RootState) => ({
-    isDetailsModalOpen: state.isDetailsModalOpen,
     selectedPhoto: state.selectedPhoto,
   }));
   const dispatch = useDispatch();

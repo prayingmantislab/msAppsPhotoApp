@@ -21,10 +21,6 @@ function App() {
   const category = useSelector((state: RootState) => state.currentCategory);
   const page = useSelector((state: RootState) => state.currentPage);
 
-  const onPhotoClick = (photo: Photo) => {
-    // Handle the photo click here
-  };
-
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
@@ -39,9 +35,6 @@ function App() {
 
     fetchPhotos();
   }, [category, page]);
-  const isPhotoSelected = useSelector(
-    (state: RootState) => state.selectedPhoto !== null
-  );
   return (
     <div>
       <h1 className='text-2xl sm:text-3xl lg:text-4xl leading-none font-extrabold text-gray-900 tracking-tight mb-8 mt-4 text-center'>
