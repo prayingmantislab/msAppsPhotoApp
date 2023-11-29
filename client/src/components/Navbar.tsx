@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { useDispatch } from 'react-redux';
-import { setCurrentCategory } from '../store';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentCategory, setCurrentPage } from '../store';
 
+interface RootState {
+  currentPage: number;
+}
 const Navbar = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const currentPage = useSelector((state: RootState) => state.currentPage);
   const dispatch = useDispatch();
   const openModal = () => {
     setModalIsOpen(true);
@@ -17,9 +21,21 @@ const Navbar = () => {
     dispatch(setCurrentCategory(category));
     closeModal();
   };
+  const handleNextPage = () => {
+    dispatch(setCurrentPage(currentPage + 1));
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      dispatch(setCurrentPage(currentPage - 1));
+    }
+  };
   return (
     <nav className='container mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center space-x-4'>
-      <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+      <button
+        onClick={handlePreviousPage}
+        className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+      >
         Prev
       </button>
       <button
@@ -28,7 +44,10 @@ const Navbar = () => {
       >
         Category
       </button>
-      <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+      <button
+        onClick={handleNextPage}
+        className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+      >
         Next
       </button>
 
