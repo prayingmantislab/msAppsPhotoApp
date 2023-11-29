@@ -19,7 +19,7 @@ interface RootState {
 function App() {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const category = useSelector((state: RootState) => state.currentCategory);
-  const [page, setPage] = useState(1);
+  const page = useSelector((state: RootState) => state.currentPage);
 
   const onPhotoClick = (photo: Photo) => {
     // Handle the photo click here
