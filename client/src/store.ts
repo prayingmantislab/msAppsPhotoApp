@@ -3,11 +3,17 @@ import { configureStore, createSlice } from '@reduxjs/toolkit';
 interface Photo {
   id: number;
   largeImageURL: string;
+  views: number;
+  downloads: number;
+  likes: number;
+  imageWidth: number;
+  imageHeight: number;
 }
 
 interface State {
   photos: Photo[];
   isCategoryModalOpen: boolean;
+  isDetailsModalOpen: boolean;
   currentPage: number;
   currentCategory: string;
   selectedPhoto: Photo | null;
@@ -16,6 +22,7 @@ interface State {
 const initialState: State = {
   photos: [],
   isCategoryModalOpen: false,
+  isDetailsModalOpen: false,
   currentPage: 1,
   currentCategory: 'monuments',
   selectedPhoto: null,
@@ -54,5 +61,6 @@ export const {
 const store = configureStore({
   reducer: slice.reducer,
 });
+export type RootState = ReturnType<typeof store.getState>;
 
 export default store;

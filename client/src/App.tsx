@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import Navbar from './components/Navbar';
 import PhotoList from './components/PhotoList';
-import { Provider, useSelector } from 'react-redux';
-import store from './store';
+import { useSelector } from 'react-redux';
+import DetailsPhotoModal from './components/DetailsPhotoModal';
 interface Photo {
   id: number;
   largeImageURL: string;
@@ -39,14 +39,17 @@ function App() {
 
     fetchPhotos();
   }, [category, page]);
-
+  const isPhotoSelected = useSelector(
+    (state: RootState) => state.selectedPhoto !== null
+  );
   return (
     <div>
       <h1 className='text-2xl sm:text-3xl lg:text-4xl leading-none font-extrabold text-gray-900 tracking-tight mb-8 mt-4 text-center'>
         Pixa Bay Photo App
       </h1>
       <Navbar />
-      <PhotoList photos={photos} onPhotoClick={onPhotoClick} />
+      <PhotoList photos={photos} />
+      <DetailsPhotoModal />
     </div>
   );
 }

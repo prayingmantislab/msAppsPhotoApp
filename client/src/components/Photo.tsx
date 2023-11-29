@@ -3,11 +3,10 @@ interface PhotoProps {
     id: number;
     largeImageURL: string;
   };
-  onClick: (photo: { id: number; largeImageURL: string }) => void;
 }
 
-const Photo: React.FC<PhotoProps> = ({ photo, onClick }) => (
-  <div className='w-full h-full ' onClick={() => onClick(photo)}>
+const Photo: React.FC<PhotoProps> = ({ photo }) => (
+  <div className='w-full h-full '>
     <img
       src={photo.largeImageURL}
       alt={`Photo ${photo.id}`}
