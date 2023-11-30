@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentCategory, setCurrentPage } from '../store';
+import { setCurrentCategory, setCurrentPage, setSortOrder } from '../store';
+import { SortOrder } from '../types/types';
 
 interface RootState {
   currentPage: number;
@@ -30,6 +31,10 @@ const Navbar = () => {
       dispatch(setCurrentPage(currentPage - 1));
     }
   };
+
+  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    dispatch(setSortOrder(event.target.value as SortOrder));
+  };
   return (
     <nav className='container mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center space-x-4'>
       <button
@@ -38,6 +43,14 @@ const Navbar = () => {
       >
         Prev
       </button>
+      <select
+        onChange={handleSortChange}
+        className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+      >
+        <option value='popular'>Popular</option>
+        <option value='latest'>Latest</option>
+        <option value='upcoming'>Upcoming</option>
+      </select>
       <button
         className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
         onClick={openModal}
@@ -60,16 +73,7 @@ const Navbar = () => {
           Select Category
         </h2>
         <div className='flex space-x-4 space-between justify-center'>
-          {[
-            'animals',
-            'Backgrounds',
-            'Architecture',
-            'nature',
-            'food',
-            'monuments',
-            'science',
-            'cars',
-          ].map((category) => (
+          {['animals', 'nature', 'food', 'science'].map((category) => (
             <button
               key={category}
               onClick={() => selectCategory(category)}
@@ -78,7 +82,7 @@ const Navbar = () => {
               {category}
             </button>
           ))}
-        </div>{' '}
+        </div>
         <button
           onClick={closeModal}
           className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'

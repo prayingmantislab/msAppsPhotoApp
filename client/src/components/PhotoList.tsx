@@ -16,15 +16,13 @@ const PhotoList: React.FC<PhotoListProps> = ({ photos }) => {
 
   const handlePhotoClick = (photo: IPhoto) => {
     dispatch(setSelectedPhoto(photo));
-    console.log('Photo clicked', photo);
   };
-
   return (
     <div className='flex justify-center'>
       <div className='grid grid-cols-3 gap-4 max-w-screen-md'>
         {photos.slice(0, 9).map((photo) => (
-          <div onClick={() => handlePhotoClick(photo)}>
-            <Photo key={photo.id} photo={photo} />
+          <div key={photo.id} onClick={() => handlePhotoClick(photo)}>
+            <Photo photo={photo} />
           </div>
         ))}
       </div>

@@ -1,4 +1,5 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { SortOrder } from './types/types';
 
 interface Photo {
   id: number;
@@ -17,6 +18,7 @@ interface State {
   currentPage: number;
   currentCategory: string;
   selectedPhoto: Photo | null;
+  sortOrder: SortOrder;
 }
 
 const initialState: State = {
@@ -24,8 +26,9 @@ const initialState: State = {
   isCategoryModalOpen: false,
   isDetailsModalOpen: false,
   currentPage: 1,
-  currentCategory: 'monuments',
+  currentCategory: 'cats',
   selectedPhoto: null,
+  sortOrder: 'popular',
 };
 
 const slice = createSlice({
@@ -47,6 +50,9 @@ const slice = createSlice({
     setSelectedPhoto: (state, action) => {
       state.selectedPhoto = action.payload;
     },
+    setSortOrder: (state, action) => {
+      state.sortOrder = action.payload;
+    },
   },
 });
 
@@ -56,6 +62,7 @@ export const {
   setCurrentPage,
   setCurrentCategory,
   setSelectedPhoto,
+  setSortOrder,
 } = slice.actions;
 
 const store = configureStore({
