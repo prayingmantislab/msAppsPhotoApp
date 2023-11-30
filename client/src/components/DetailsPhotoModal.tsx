@@ -4,17 +4,22 @@ import { setSelectedPhoto } from '../store';
 import { RootState } from '../store';
 
 const DetailsPhotoModal: React.FC = () => {
+  // Get the selectedPhoto from the Redux state
   const { selectedPhoto } = useSelector((state: RootState) => ({
     selectedPhoto: state.selectedPhoto,
   }));
   const dispatch = useDispatch();
 
+  // Define a function to close the modal
   const handleClose = () => {
+    // Dispatch the setSelectedPhoto action with null to unselect the photo
     dispatch(setSelectedPhoto(null));
   };
 
   return (
+    // Show the modal if a photo is selected
     <Modal isOpen={selectedPhoto !== null} onRequestClose={handleClose}>
+      {/* If a photo is selected, show its details */}
       {selectedPhoto && (
         <div className='flex flex-col items-center space-y-4'>
           <img

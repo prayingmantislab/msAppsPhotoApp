@@ -26,17 +26,22 @@ function App() {
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
+        // Fetch photos from the API
         const response = await axios.get(
           `http://localhost:5001/api/photos/${category}?page=${page}&sort=${sortOrder}`
         );
+        // Set the fetched photos to the state
         setPhotos(response.data);
       } catch (error) {
+        // Log the error if the fetch fails
         console.error('Failed to fetch photos', error);
       }
     };
 
+    // Call the fetchPhotos function
     fetchPhotos();
-  }, [category, page, sortOrder]);
+  }, [category, page, sortOrder]); // Dependencies for the effect
+
   return (
     <div>
       <h1 className='text-2xl sm:text-3xl lg:text-4xl leading-none font-extrabold text-gray-900 tracking-tight mb-8 mt-4 text-center'>

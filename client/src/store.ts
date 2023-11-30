@@ -1,6 +1,7 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 import { SortOrder } from './types/types';
 
+// Define the structure of a photo object
 interface Photo {
   id: number;
   largeImageURL: string;
@@ -11,6 +12,7 @@ interface Photo {
   imageHeight: number;
 }
 
+// Define the structure of the state
 interface State {
   photos: Photo[];
   isCategoryModalOpen: boolean;
@@ -21,6 +23,7 @@ interface State {
   sortOrder: SortOrder;
 }
 
+// Define the initial state
 const initialState: State = {
   photos: [],
   isCategoryModalOpen: false,
@@ -31,31 +34,39 @@ const initialState: State = {
   sortOrder: 'popular',
 };
 
+// Create a slice of the Redux store
 const slice = createSlice({
   name: 'app',
   initialState,
   reducers: {
+    // Define a reducer to set the photos
     setPhotos: (state, action) => {
       state.photos = action.payload;
     },
+    // Define a reducer to toggle the category modal
     toggleCategoryModal: (state) => {
       state.isCategoryModalOpen = !state.isCategoryModalOpen;
     },
+    // Define a reducer to set the current page
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
     },
+    // Define a reducer to set the current category
     setCurrentCategory: (state, action) => {
       state.currentCategory = action.payload;
     },
+    // Define a reducer to set the selected photo
     setSelectedPhoto: (state, action) => {
       state.selectedPhoto = action.payload;
     },
+    // Define a reducer to set the sort order
     setSortOrder: (state, action) => {
       state.sortOrder = action.payload;
     },
   },
 });
 
+// Export the actions
 export const {
   setPhotos,
   toggleCategoryModal,
@@ -65,6 +76,7 @@ export const {
   setSortOrder,
 } = slice.actions;
 
+// Configure the Redux store
 const store = configureStore({
   reducer: slice.reducer,
 });
