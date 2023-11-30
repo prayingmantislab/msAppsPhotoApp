@@ -12,19 +12,21 @@ interface PhotoListProps {
 }
 
 const PhotoList: React.FC<PhotoListProps> = ({ photos }) => {
+  // Get the dispatch function from Redux
   const dispatch = useDispatch();
 
+  // Define a function to handle when a photo is clicked
   const handlePhotoClick = (photo: IPhoto) => {
+    // Dispatch the setSelectedPhoto action with the clicked photo
     dispatch(setSelectedPhoto(photo));
-    console.log('Photo clicked', photo);
   };
 
   return (
     <div className='flex justify-center'>
       <div className='grid grid-cols-3 gap-4 max-w-screen-md'>
         {photos.slice(0, 9).map((photo) => (
-          <div onClick={() => handlePhotoClick(photo)}>
-            <Photo key={photo.id} photo={photo} />
+          <div key={photo.id} onClick={() => handlePhotoClick(photo)}>
+            <Photo photo={photo} />
           </div>
         ))}
       </div>
