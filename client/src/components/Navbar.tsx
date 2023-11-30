@@ -75,14 +75,14 @@ const Navbar = () => {
         contentLabel='Category Modal'
         className='flex items-center justify-center fixed left-0 bottom-0 w-full h-full bg-blue-100 bg-opacity-50'
       >
-        <div className='bg-blue-100 rounded-lg w-1/2 h-1/2 overflow-auto p-4 flex flex-col items-center'>
+        <div className='bg-blue-100 rounded-lg w-2/3 h-1/2 overflow-auto p-4 flex flex-col items-center'>
           <h2>Select Category</h2>
-          <div className='grid grid-cols-6 justify-center w-full mb-4 mt-4 gap-4'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 justify-items-center w-full mb-4 mt-4 gap-4'>
             {categoryData.map((category) => (
               <button
                 key={category}
                 onClick={() => selectCategory(category)}
-                className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded'
+                className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center w-full'
               >
                 {category}
               </button>
