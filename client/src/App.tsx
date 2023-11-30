@@ -39,8 +39,8 @@ function App() {
   }, [category, page, sortOrder]);
 
   return (
-    <div>
-      <h1 className='text-2xl sm:text-3xl lg:text-4xl leading-none font-extrabold text-gray-900 tracking-tight mb-8 mt-4 text-center'>
+    <div className='bg-blue-100 min-h-screen'>
+      <h1 className='text-blue-700 text-4xl sm:text-4xl lg:text-4xl leading-none font-extrabold text-gray-900 tracking-tight mb-8 mt-4 text-center'>
         Pixa Bay Photo App
       </h1>
       <Navbar />

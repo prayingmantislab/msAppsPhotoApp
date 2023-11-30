@@ -16,13 +16,13 @@ const DetailsPhotoModal: React.FC = () => {
   return (
     <Modal isOpen={selectedPhoto !== null} onRequestClose={handleClose}>
       {selectedPhoto && (
-        <div className='bg-white rounded-lg h-auto flex flex-col items-center space-y-4'>
+        <div className='bg-blue-100 rounded-lg h-auto flex flex-col items-center space-y-4 p-8 h-screen'>
           <img
             src={selectedPhoto.largeImageURL}
             alt=''
-            className='w-1/2 h-1/2'
+            className='w-1/2 h-1/2 object-cover rounded-md shadow-md border-2 border-blue-200'
           />
-          <h2 className='text-xl font-bold'>Photo Details</h2>
+          <h2 className='text-3xl text-blue-800 font-bold'>Photo Details</h2>
           <p>ID: {selectedPhoto.id}</p>
           <p>Views: {selectedPhoto.views}</p>
           <p>Downloads: {selectedPhoto.downloads}</p>

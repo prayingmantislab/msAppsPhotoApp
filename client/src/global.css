@@ -1,0 +1,10 @@
+@tailwind base;
+
+@layer base {
+  p {
+    @apply text-blue-700 text-xl;
+  }
+  h2 {
+    @apply text-3xl text-blue-800 font-bold;
+  }
+}
