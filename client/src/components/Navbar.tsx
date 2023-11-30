@@ -73,27 +73,32 @@ const Navbar = () => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel='Category Modal'
+        className='flex items-center justify-center fixed left-0 bottom-0 w-full h-full bg-gray-800 bg-opacity-50'
       >
-        <h2 className='text-2xl font-semibold text-gray-800'>
-          Select Category
-        </h2>
-        <div className='flex space-x-4 space-between justify-center'>
-          {['animals', 'nature', 'food', 'science'].map((category) => (
+        <div className='bg-white rounded-lg w-1/2 h-1/2 overflow-auto p-4 flex flex-col items-center'>
+          <h2 className='text-2xl font-semibold text-gray-800 mb-4'>
+            Select Category
+          </h2>
+          <div className='flex justify-between w-full mb-4'>
+            {['animals', 'nature', 'food', 'science'].map((category) => (
+              <button
+                key={category}
+                onClick={() => selectCategory(category)}
+                className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+          <div className='w-full flex justify-start'>
             <button
-              key={category}
-              onClick={() => selectCategory(category)}
-              className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+              onClick={closeModal}
+              className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-8 rounded justify-center items-center'
             >
-              {category}
+              Close
             </button>
-          ))}
+          </div>
         </div>
-        <button
-          onClick={closeModal}
-          className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'
-        >
-          Close
-        </button>
       </Modal>
     </nav>
   );
