@@ -6,7 +6,7 @@ interface PhotoProps {
 }
 
 const Photo: React.FC<PhotoProps> = ({ photo }) => (
-  <div className='w-full h-64 relative '>
+  <div className='w-full h-64'>
     <img
       src={photo.largeImageURL}
       alt={`Photo ${photo.id}`}
