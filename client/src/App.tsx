@@ -26,21 +26,17 @@ function App() {
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
-        // Fetch photos from the API
         const response = await axios.get(
           `http://localhost:5001/api/photos/${category}?page=${page}&sort=${sortOrder}`
         );
-        // Set the fetched photos to the state
         setPhotos(response.data);
       } catch (error) {
-        // Log the error if the fetch fails
         console.error('Failed to fetch photos', error);
       }
     };
 
-    // Call the fetchPhotos function
     fetchPhotos();
-  }, [category, page, sortOrder]); // Dependencies for the effect
+  }, [category, page, sortOrder]);
 
   return (
     <div>
