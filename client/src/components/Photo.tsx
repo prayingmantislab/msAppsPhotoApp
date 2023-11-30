@@ -6,11 +6,11 @@ interface PhotoProps {
 }
 
 const Photo: React.FC<PhotoProps> = ({ photo }) => (
-  <div className='w-full h-full '>
+  <div className='w-full h-64 relative '>
     <img
       src={photo.largeImageURL}
       alt={`Photo ${photo.id}`}
-      className='object-contain w-80 h-80 mx-auto mx-2'
+      className='w-full h-full object-cover'
     />
   </div>
 );
