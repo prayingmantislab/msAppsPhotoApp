@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentCategory, setCurrentPage, setSortOrder } from '../store';
 import { SortOrder } from '../types/types';
-
+import { categoryData } from '../data/categoryData';
 interface RootState {
   currentPage: number;
 }
@@ -73,27 +73,25 @@ const Navbar = () => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel='Category Modal'
-        className='flex items-center justify-center fixed left-0 bottom-0 w-full h-full bg-gray-800 bg-opacity-50'
+        className='flex items-center justify-center fixed left-0 bottom-0 w-full h-full bg-blue-100 bg-opacity-50'
       >
-        <div className='bg-white rounded-lg w-1/2 h-1/2 overflow-auto p-4 flex flex-col items-center'>
-          <h2 className='text-2xl font-semibold text-gray-800 mb-4'>
-            Select Category
-          </h2>
-          <div className='flex justify-between w-full mb-4'>
-            {['animals', 'nature', 'food', 'science'].map((category) => (
+        <div className='bg-blue-100 rounded-lg w-1/2 h-1/2 overflow-auto p-4 flex flex-col items-center'>
+          <h2>Select Category</h2>
+          <div className='grid grid-cols-6 justify-center w-full mb-4 mt-4 gap-4'>
+            {categoryData.map((category) => (
               <button
                 key={category}
                 onClick={() => selectCategory(category)}
-                className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+                className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded'
               >
                 {category}
               </button>
             ))}
           </div>
-          <div className='w-full flex justify-start'>
+          <div className='w-full flex items-center justify-center'>
             <button
               onClick={closeModal}
-              className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-8 rounded justify-center items-center'
+              className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-8 rounded'
             >
               Close
             </button>
