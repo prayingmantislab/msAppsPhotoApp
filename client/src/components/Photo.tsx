@@ -10,7 +10,7 @@ const Photo: React.FC<PhotoProps> = ({ photo }) => (
     <img
       src={photo.largeImageURL}
       alt={`Photo ${photo.id}`}
-      className='w-full h-full object-cover'
+      className='w-full h-full object-cover rounded-md'
     />
   </div>
 );
