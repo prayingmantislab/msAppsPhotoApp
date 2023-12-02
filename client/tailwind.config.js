@@ -4,8 +4,12 @@ module.exports = {
     './src/**/*.{js,jsx,ts,tsx}',
 ],
 theme: {
-    extend: {},
+    extend: {
+      colors: {
+      ultramarine: '#120A8F', // Replace with the actual hex code for ultramarine
+    },},
   },
+  
   plugins: [],
 }
 
