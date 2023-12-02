@@ -23,6 +23,7 @@ function App() {
   const category = useSelector((state: RootState) => state.currentCategory);
   const page = useSelector((state: RootState) => state.currentPage);
   const sortOrder = useSelector((state: RootState) => state.sortOrder);
+
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
@@ -34,15 +35,20 @@ function App() {
         console.error('Failed to fetch photos', error);
       }
     };
-
     fetchPhotos();
   }, [category, page, sortOrder]);
-
   return (
-    <div className='bg-blue-100 min-h-screen'>
-      <h1 className='text-blue-700 text-4xl sm:text-4xl lg:text-4xl leading-none font-extrabold text-gray-900 tracking-tight mb-8 mt-4 text-center'>
-        Pixa Bay Photo App
-      </h1>
+    <div className='bg-blue-800 min-h-screen'>
+      <div className='flex items-center justify-center'>
+        <div className='animate-spin h-10 w-10 border-t-2 border-b-2 border-white rounded-full'></div>
+        <h1 className='text-white text-4xl sm:text-4xl lg:text-4xl leading-none font-extrabold tracking-tight mb-8 mt-4 text-center mx-2'>
+          Pixa Bay Photo App
+        </h1>
+        <div className='animate-spin h-10 w-10 border-t-2 border-b-2 border-white rounded-full'></div>
+      </div>
+      <div className='transition duration-500 ease-in-out bg-blue-500 hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110'>
+        Hover me
+      </div>
       <Navbar />
       <PhotoList photos={photos} />
       <DetailsPhotoModal />
